@@ -1,0 +1,75 @@
+#
+# Makefile for MS Visual C (nmake)
+#
+# Build command:
+#  nmake /f makefile.vc 
+#
+# Without debug info: 
+#  nmake nodebug=1 /f makefile.vc
+
+!include <win32.mak>
+
+INCL	= -I. -Ilibjpeg -Ilibtiff/libtiff -Iboost
+
+LIBTIFF=libtiff\libtiff\libtiff.lib
+LIBJPEG=libjpeg\libjpeg.lib
+
+EXE=sfftobmp.exe
+
+CFLAGS= /D_CRT_SECURE_NO_DEPRECATE $(cflags) $(cdebug) $(cvars) 
+CPPFLAGS= /EHsc /D_CRT_SECURE_NO_DEPRECATE /DBOOST_ALL_NO_LIB $(INCL) $(cppflags) $(cflags) $(cdebug) $(cvars)
+LDFLAGS= $(ldebug) $(conlflags)
+LDLIBS= $(conlibs) $(LIBJPEG) $(LIBTIFF)
+
+OBJ	= \
+	..\src\cmdline.obj \
+	..\src\codes.obj \
+	..\src\common.obj \
+	..\src\decoder.obj \
+	..\src\input.obj \
+	..\src\main.obj \
+	..\src\my_getopt.obj \
+	..\src\output.obj \
+	boost\libs\system\src\error_code.obj \
+	boost\libs\filesystem\src\operations.obj \
+	boost\libs\filesystem\src\path.obj \
+	boost\libs\filesystem\src\portability.obj \
+	boost\libs\filesystem\src\utf8_codecvt_facet.obj
+
+# Template command for compiling .c to .obj
+.c.obj:
+	$(cc) $(CFLAGS) $*.c /Fo$@
+
+# Template command for compiling .c to .obj
+.cpp.obj:
+	$(CPP) $(CPPFLAGS) $*.cpp /Fo$@
+
+all:	$(LIBJPEG) $(LIBTIFF) $(EXE)
+
+$(LIBJPEG): 
+	cd libjpeg
+	$(MAKE) /f Makefile.vc
+	cd..
+
+$(LIBTIFF): 
+	cd libtiff
+	$(MAKE) /f Makefile.vc
+	cd..
+
+$(EXE):	$(LIBTIFF) $(LIBJPEG) $(OBJ)
+	$(link) $(LDFLAGS) $(LDLIBS) $(OBJ) -out:$(EXE)
+
+clean:
+	cd libtiff
+	$(MAKE) /f Makefile.vc clean
+	cd..
+	cd libjpeg
+	$(MAKE) /f Makefile.vc clean
+	cd..
+	-del *.exe
+	-del *.ilk
+	-del *.dll.manifest
+	-del *.exe.manifest
+	-del *.exp
+	-del *.pdb
+	-del $(OBJ)
