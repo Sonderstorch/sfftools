@@ -50,6 +50,10 @@
 
 using namespace std;
 
+#ifdef _MSC_VER
+#define fileno _fileno
+#endif
+
 //-----------------------------------------------------------------
 
 const std::string CSimpleException::m_aReasons[err_count+1] =
