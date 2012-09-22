@@ -64,8 +64,8 @@ namespace fs = boost::filesystem;
 
 //-------------------------------------------------------------
 
-#define VERSION "3.1.3"
-#define COPYRIGHT "1998-2009 Peter Schaefer-Hutter and contributors"
+#define VERSION "3.1.4"
+#define COPYRIGHT "1998-2012 Peter Schaefer-Hutter and contributors"
 
 //-------------------------------------------------------------
 
