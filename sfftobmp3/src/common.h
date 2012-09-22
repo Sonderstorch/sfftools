@@ -75,7 +75,7 @@ public:
   CSimpleException(const int nError) :
     m_nError(nError) { };
 
-  const std::string& what();
+  const std::string& what() const;
 
 protected:
     static const std::string m_aReasons[err_count+1];
