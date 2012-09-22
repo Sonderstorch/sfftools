@@ -1,0 +1,233 @@
+---------------
+SFFTOBMP V3.1.4
+---------------
+
+Tool to convert "Structured Fax Files" into Windows bitmaps (BMP), 
+Portable Bitmaps (PBM), JPEG Pictures (JPG) and single or multi-
+paged TIFF Images.
+
+
+SFF - Wotsit ?
+--------------
+
+SFF means 'Structured Fax File', intended by the CAPI interface to be 
+used to save incoming faxes. Within Linux it's e.g. the AVM-B1 card 
+which creates such files. 
+
+See http://www.capi.org for specs of the CAPI interface.
+
+This is where sfftobmp comes in.
+
+
+Features
+--------
+
+Conversion of SFF files in Modified Huffman (MH) coding to Windows 
+BMP (monochrome, uncompressed), PBM (Portable Bitmap with RAWBITS 
+P4-Header), JPEG or TIFF files.
+
+SFF files containing more than one page will be split into one 
+output file per page, except for TIFF output which will be one multi-
+paged file (however, even for TIFF there's an option to create 
+singlepaged files).
+
+Written in C++
+
+
+Compilation
+-----------
+
+Only tested under Ubuntu Linux ('Gutsy') and Windows2000 SP4.
+
+Used compilers:
+
+gcc 4.1.3
+Visual Studio Express
+
+Under Linux, a simple call to './configure && make' will be sufficient 
+most of the time if using GNU make and provided all needed libraries 
+are installed (see below).
+
+Under Windows, a Visual Studio workspace file is no longer supplied.
+Please see the folder "win32" for a Makefile for Microsoft NMAKE to 
+compile sfftobmp on the command line. Use
+
+ nmake nodebug=1 /f makefile.vc
+ 
+to build (run the VCVARSALL.BAT before to set all environment variables).
+
+Alternatively, you can use the free MinGW C++ Compiler. 
+A good (and also free) IDE is Dev-C++ from Bloodshed Software - you'll 
+find a workspace file for this IDE in the distribution ("sfftobmp.dev").
+See http://www.bloodshed.net/dev/devcpp.html. However, you will have to
+update the paths to external libraries contained in this workspace.
+
+To compile sfftobmp you need the following 3rd party libraries:
+
+  - jpeglib
+  - tifflib
+  - libboost-filesystem (available since Boost 1.31.0).
+
+On a Linux system these libraries can usually be installed via the package
+manager. On a Debian system you need
+
+ libjpeg62 and libjpeg62-dev
+ libtiff4 and libtiff4-dev
+ libboost-filesystem-dev
+
+That's all.
+
+On Windows, the sources are supplied in the "win32" folder, the makefiles
+are already preconfigured for statically linkage with sfftobmp. 
+
+For Dev-C++ pre-packaged versions of Tfflib and Jpeglib are available.
+See http://www.bloodshed.net/dev/packages/imagelib.html. Boost libraries
+have to be compiled by yourself, tough (they do provide MinGW support).
+
+The 3rd party libraries can be downloaded at this locations:
+
+ Boost libraries:  http://www.boost.org/
+ Tifflib        :  http://www.remotesensing.org/libtiff/
+ Jpeglib        :  http://www.ijg.org/
+
+
+Usage
+-----
+
+  sfftobmp [options] INFILE1 [INFILE2 ..] [-o OUTSPEC]
+
+  Options:
+    -h or -help       Show help message and exit
+    -v or -version    Show version and exit
+    -b or -bmp        Output is one monochrome BMP file for each fax page
+    -p or -pbm        Output is one Portable Bitmap file for each fax page
+    -j or -jpg        Output is one JPEG file for each fax page
+    -jNUM or -jpg=NUM Use jpeg quality of NUM percent (1..99)
+    -T or -tifs       Output is one single-page TIFF file for each fax page
+    -t or -tif        Output is one multi-paged TIFF file containing all pages
+    -r or -keepres    Inhibit line doubling for low-res faxes
+    -d or -keepdate   Keep date and time of input file for the output file(s)
+    -q or -quiet      Don't display messages (except errors)
+  
+OUTSPEC is interpreted as:
+   
+ - a filename if only one input file is given.
+ - a directory name if more than one input file is given.
+  
+If OUTSPEC is ommitted, the name of the output files will be 
+derived from the input files and created in the same directory.
+  
+In case of TIFF output, you can specify the compression by using 
+additional specifiers:
+   
+ -tr resp. -Tr : CCITT modified Huffman RLE
+ -t4 resp. -T4 : CCITT Fax Class 4 compression
+  
+The default is CCITT Fax Class 3 compression.
+
+For JPEG output you can optionally set the JPEG quality used by 
+adding a two-digit number between 1 and 99 to the option. 
+
+I.e.
+
+-j35       or
+-jpg=35
+
+means JPEG output with 35% quality. If you don't give a quality, 
+a default of 40% is used (mostly sufficient for b&w faxes).
+
+
+OUTPUT ON STDOUT
+----------------
+
+Output on stdout is available for multipaged TIFF output 
+only (option "-t"). Use "-" as output filename in this 
+case:
+
+ sfftobmp -t infile.sff -o - > out.tif
+
+NOTE: Reading from stdin is not supported.
+
+ 
+OUTPUT FILENAMES
+----------------
+
+The output filenames will be created by replacing the
+extension of the input file (if it exists) by the extension 
+of the target format. If the input file contains more than 
+one page a three-digit number is added.
+
+So, if the input is called "foo.sff" and has 3 pages,
+the output files are named "foo_001.bmp", "foo_002.bmp"
+and "foo_003.bmp" if you don't specify an OUTSPEC.
+
+If you specify an OUTSPEC with an extension, say 
+"sfftobmp -b foo.sff -o bar.out" the output filenames are 
+called "bar_001.out", "bar_002.out" and "bar_003.out" - 
+that is the given extension ".out" is preserved in this
+case.
+
+If you specify an OUTSPEC with no extension, the output
+files will also carry no extension.
+
+
+RESOLUTION HANDLING
+-------------------
+
+SffToBmp keeps resolution information intact. This means, if
+you convert a fax with 203x98 dpi this resolution information is
+written in the output file if it is supported by the output
+format. This is JPEG, TIFF and BMP.
+
+However, as many bitmap viewer applications are not considering
+this information while displaying the bitmap, SffToBmp defaults
+to double scanlines if a low-res fax (i.e. 203x98 dpi) is 
+converted.
+
+In case your image viewer does actually treat resolution information
+correctly (your image will look stretched vertically in this case), 
+you can suppress this scanline-doubling by specifying the "-r" option.
+
+
+TODO
+----
+
+- speed up decoder with better table lookups
+  (looking at GHz CPUs noadays, i doubt that this happes...) 
+- support other non-intel architectures (64 Bits, different
+  byte order). Sfftobmp will most likely fail on these.
+  (well, no one complained till now)
+- BMP format stores the scan lines bottom-up, that means
+  the first line in the file is the last on the screen...
+  Therefore the BMP target file will be filled from the end to
+  the beginning. To do that, a seek beyond the end of file 
+  is necessary at creation of the file. This may lead to problems
+  on some platforms.
+
+
+Last but not least...
+---------------------
+
+Should decoding of a SFF file fail:
+Please send the SFF file uuencoded to me - if it isn't about
+500 MB and/or contains top secret information ;).
+
+Suggestions, extensions and patches welcome, flames will go 
+to /dev/null.
+
+I'm always pleased to hear that somebody is actually using my
+software. If you can manage it, e-mail me a quick notice.
+
+If you *really* like sfftobmp or depend on it, please look
+into my wishlist:
+
+http://www.amazon.de/gp/registry/wishlist/OVQ6LSYS4E4D/028-1843567-9543743
+
+Thanks!
+
+Contact:
+--------
+peter.schaefer@gmx.net
+http://sfftools.sourceforge.net
+
+$Id$
