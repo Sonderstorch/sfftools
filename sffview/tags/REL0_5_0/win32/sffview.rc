@@ -1,0 +1,16 @@
+sffview ICON "sffview.ico"
+
+#include "wx/msw/wx.rc"
+
+open BITMAP "../bitmaps/open.bmp"
+print BITMAP "../bitmaps/print.bmp"
+help BITMAP "../bitmaps/help.bmp"
+prev BITMAP "../bitmaps/prev.bmp"
+next BITMAP "../bitmaps/next.bmp"
+zoomin BITMAP "../bitmaps/zoomin.bmp"
+zoomout BITMAP "../bitmaps/zoomout.bmp"
+flipx BITMAP "../bitmaps/flipx.bmp"
+flipy BITMAP "../bitmaps/flipy.bmp"
+fit_window BITMAP "../bitmaps/fit_window.bmp"
+fit_width BITMAP "../bitmaps/fit_width.bmp"
+actual_size BITMAP "../bitmaps/actual_size.bmp"
