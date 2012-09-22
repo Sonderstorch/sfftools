@@ -59,6 +59,13 @@
 
 #ifdef _MSC_VER
 #define fileno _fileno
+#define close _close
+#define lseek _lseek
+#define read _read
+#define write _write
+#ifndef STDOUT_FILENO
+#define STDOUT_FILENO 1
+#endif
 #endif
 
 using namespace std;
@@ -157,15 +164,24 @@ void CFile::OpenTemp()
   }
   unlink(tmp_name);
 #else
-  _mktemp(tmp_name);
-  if (( m_nFileNo ) ||
-      (( m_nFileNo = (int)::CreateFile(tmp_name,
-                     GENERIC_READ|GENERIC_WRITE, 0, NULL,
-                     CREATE_NEW,FILE_ATTRIBUTE_TEMPORARY|
-                     FILE_FLAG_DELETE_ON_CLOSE, NULL)) == 0))
+  if ( m_nFileNo == 0)
   {
-    cerr << "temp file couldn't be created: error " << errno << endl;
-    throw CSimpleException(CSimpleException::err_openfile);
+    _mktemp(tmp_name);
+    HANDLE hFile;
+    if ( (hFile = ::CreateFile(tmp_name,
+            GENERIC_READ|GENERIC_WRITE, 0, NULL,
+            CREATE_NEW,FILE_ATTRIBUTE_TEMPORARY|
+            FILE_FLAG_DELETE_ON_CLOSE, NULL)) == INVALID_HANDLE_VALUE)
+    {
+      cerr << "temp file couldn't be created." << endl;
+      throw CSimpleException(CSimpleException::err_openfile);
+    }
+    m_nFileNo = _open_osfhandle( (intptr_t) hFile, 0 );
+    if ( m_nFileNo == -1 )
+    {
+      cerr << "could not get osf handle: error " << errno << endl;
+      throw CSimpleException(CSimpleException::err_openfile);
+    }
   }
 #endif
   m_strPath = tmp_name;
@@ -176,11 +192,7 @@ void CFile::Close()
   if (m_hFile) {
     fclose(m_hFile);
   } else if (m_nFileNo) {
-#ifndef WIN32
     close(m_nFileNo);
-#else
-    ::CloseHandle((HANDLE)m_nFileNo);
-#endif
   }
   m_nFileNo = 0;
   m_hFile = NULL;
@@ -250,7 +262,6 @@ void CFile::DumpToStdOut()
   char buf[1024];
   sff_dword count;
 
-#ifndef WIN32
   int result=lseek(m_nFileNo,0,SEEK_SET);
   if (result!=0) {
     cerr << "seeking to temp file start failed " << endl;
@@ -267,21 +278,4 @@ void CFile::DumpToStdOut()
     cerr << "reading from temp file failed with error " << errno << endl;
     throw CSimpleException(CSimpleException::err_openfile);
   }
-#else
-  SetFilePointer((HANDLE)m_nFileNo,0,0,FILE_BEGIN);
-  HANDLE hStdOut = ::GetStdHandle(STD_OUTPUT_HANDLE);
-  sff_dword written;
-  for (;;) {
-    ::ReadFile((HANDLE)m_nFileNo, buf, 1024, (DWORD*)&count, NULL);
-    if (count <= 0) break;
-    if (!::WriteFile(hStdOut, buf, count, (DWORD *)&written, NULL)) {
-      cerr << "writing to stdout failed with error " << errno << endl;
-      throw CSimpleException(CSimpleException::err_openfile);
-    }
-  }
-  if (count<0) {
-    cerr << "reading from temp file failed with error " << errno << endl;
-    throw CSimpleException(CSimpleException::err_openfile);
-  }
-#endif
 }
