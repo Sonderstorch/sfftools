@@ -95,7 +95,7 @@ int main( int argc, char *argv[] )
           try {
             fs::create_directories(strOutSpec);
           }
-          catch (const std::exception & e) {
+          catch (const std::exception&) {
           }
         }
         // Check that dir exists
@@ -313,7 +313,7 @@ int main( int argc, char *argv[] )
     cerr << "ERROR: " << e.what() << endl;
     rc = 2;
   }
-  catch (CSimpleException e) {
+  catch (const CSimpleException& e) {
     cerr << "ERROR: " << e.what() << endl;
     rc = 2;
   }

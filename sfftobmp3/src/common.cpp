@@ -57,6 +57,10 @@
 #include <io.h>   // _mktemp
 #endif
 
+#ifdef _MSC_VER
+#define fileno _fileno
+#endif
+
 using namespace std;
 
 //-----------------------------------------------------------------

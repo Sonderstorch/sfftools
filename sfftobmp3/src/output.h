@@ -89,7 +89,8 @@ public:
   COutputFilter(const std::string& strExt, sff_word nPagecount) :
       m_strExtension(strExt),
       m_nPageCount(nPagecount),
-      m_sink(m_abBuffer, sizeof(m_abBuffer))
+      m_sink(m_abBuffer, sizeof(m_abBuffer)),
+      m_pFile(0)
        { /* nth. else */ }
 
   virtual void Init(CFile *pFile);
@@ -116,8 +117,8 @@ protected:
 
 public:
   CBMPFilter(sff_word nPagecount) :
-    COutputFilter(".bmp", nPagecount)
-    { /* nth. else */ };
+    COutputFilter(".bmp", nPagecount),
+    m_nLineToWrite(0) { /* nth. else */ };
 
   void BeginPage(sff_dword aPage, sff_dword aWidth,
                  sff_dword aHeight, sff_word aDpi,
@@ -134,7 +135,8 @@ protected:
 
 public:
   CPBMFilter(sff_word nPagecount) :
-    COutputFilter(".pbm", nPagecount)
+    COutputFilter(".pbm", nPagecount),
+    m_Width(0)
     { /* nth. else */ };
 
   void BeginPage(sff_dword aPage, sff_dword aWidth,
@@ -177,7 +179,6 @@ class CTIFFFilter : public COutputFilter
 {
 protected:
   TIFF *             m_tiffFile;
-  TIFFErrorHandler   m_terr;
   unsigned           m_nRow;
   sff_dword          m_wCompression;
   time_t             m_nModTime;
@@ -187,7 +188,8 @@ public:
     COutputFilter(".tif", nPagecount),
     m_wCompression(nCompression),
     m_tiffFile(NULL),
-    m_nModTime(nModTime)
+    m_nModTime(nModTime),
+    m_nRow(0)
     { /* nth. else */ };
 
   void Init(CFile *pFile);
