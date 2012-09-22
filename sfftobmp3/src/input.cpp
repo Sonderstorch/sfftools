@@ -332,7 +332,7 @@ bool CSffFile::DecodeRecord(TSFFRecord& rec, CBitSink& bitsink)
     rec.runlength = source.DecodeLine(bitsink);
     rc = TRUE;
   }
-  catch(CSimpleException e)
+  catch(const CSimpleException& e)
   {
     cerr << "ERROR: " << e.what() << endl;
     rc = FALSE;

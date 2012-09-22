@@ -95,7 +95,8 @@ protected:
 
 public:
   CHuffDecoder(sff_byte *pBuffer, sff_dword nByteCount) :
-    CBitSource(pBuffer, nByteCount) { /* nth. else */ };
+    CBitSource(pBuffer, nByteCount),
+    m_dwRunlength(0) { /* nth. else */ };
 
   int FindToken(LPTABENTRY pTable);
   int DecodeLine(CBitSink& aBitSink);
