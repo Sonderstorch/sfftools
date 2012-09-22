@@ -60,5 +60,7 @@ V3.1.3 me:
        Sfftobmp -v now also prints the library versions involved.
        The source tree now also contains makefile and 3rd-party libs for
        compilation with Microsoft Visual C.
+V3.1.4 me:
+       fixed stdout output under Windows (crash), no features added or changed.
 --
-$Id: changes,v 1.6 2009/08/23 13:21:34 pschaefer Exp $
+$Id$
