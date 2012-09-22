@@ -1,0 +1,50 @@
+-----------
+SFFVIEW 0.4
+-----------
+
+Tool to view "structured fax files" in X11.
+
+SFF - Wotsit ?
+-----------------
+SFF means 'structured fax file' and is the file format that ISDN cards with 
+CAPI interface expect and create.
+
+If you don't have an ISDN card: just don't care ;).
+
+Compilation
+-----------
+
+Windows:
+
+* First compile wxWidgets using static runtime and static wx libs:
+    cd \wx\build\msw:
+      nmake -f makefile.vc BUILD=debug UNICODE=1 SHARED=0 RUNTIME_LIBS=static
+      nmake -f makefile.vc BUILD=release UNICODE=1 SHARED=0 RUNTIME_LIBS=static
+
+* Then call
+    cd win32
+    nmake nodebug=1 /f makefile.vc all
+
+Linux:
+
+In most cases a call to 'make' may be sufficient.
+
+You need:
+
+wxGTK, version 2.9 or newer and all libraries that wxGTK needs itself.
+
+Contact:
+--------
+peter.schaefer@gmx.net
+http://sfftools.sourceforge.net
+
+Suggestions, extensions and patches welcome, flames will go to /dev/null.
+
+If you *really* like sffview or depend on it, please look into my wishlist:
+
+http://www.amazon.de/gp/registry/wishlist/OVQ6LSYS4E4D/028-1843567-9543743
+
+I'm always pleased to hear that somebody is actually using my software. If you 
+can manage it, e-mail me a quick notice.
+
+Thanks!

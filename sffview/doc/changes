@@ -1,0 +1,13 @@
+CHANGES
+-------
+
+V0.5 : me:
+       added print preview
+       update to wxWidgets 2.9.x
+
+V0.4 : me:
+       added printing support (BETA)
+       added MRU list
+       remember window position and size
+--
+$Id: changes,v 1.2 2006/10/29 19:33:57 pschaefer Exp $

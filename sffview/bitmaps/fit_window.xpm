@@ -1,0 +1,23 @@
+/* XPM */
+static const char *fit_window_xpm[]={
+"16 15 5 1",
+". c None",
+"a c None",
+"b c #000000",
+"# c #585858",
+"c c #ffffff",
+".##############a",
+".#............#a",
+".#.bbbbbbb....#a",
+".#.bcccccbb...#a",
+".#.bcccccbcb..#a",
+".#.bcccccbbbb.#a",
+".#.bccccccccb.#a",
+".#.bccccccccb.#a",
+".#.bccccccccb.#a",
+".#.bccccccccb.#.",
+".#.bccccccccb.#.",
+".#.bccccccccb.#.",
+".#.bbbbbbbbbb.#.",
+".#............#a",
+".##############a"};
