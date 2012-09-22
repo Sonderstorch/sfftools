@@ -116,7 +116,7 @@ const std::string CSimpleException::m_aReasons[err_count+1] =
     "Unknown error."
 };
 
-const string& CSimpleException::what()
+const string& CSimpleException::what() const
 {
   if (m_nError < err_count) {
     return m_aReasons[m_nError];
