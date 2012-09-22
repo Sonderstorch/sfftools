@@ -1,0 +1,23 @@
+/* XPM */
+static const char *fit_width_xpm[]={
+"16 15 5 1",
+". c None",
+"a c None",
+"b c #000000",
+"# c #585858",
+"c c #ffffff",
+".##############a",
+".#............#a",
+".#..b......b..#a",
+".#.bbbbbbbbbb.#a",
+".#..b......b..#a",
+".#............#a",
+".#.bbbbbbb....#a",
+".#.bcccccbb...#a",
+".#.bcccccbcb..#a",
+".#.bcccccbbbb.#.",
+".#.bccccccccb.#.",
+".#.bccccccccb.#.",
+".#.bccccccccb.#.",
+".#.bccccccccb.#a",
+".##############a"};
