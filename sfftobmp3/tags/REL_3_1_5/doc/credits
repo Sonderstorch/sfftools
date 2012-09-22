@@ -1,0 +1,11 @@
+---
+Gernot Hillier <ghillie@suse.de>
+Added support for output on stdout in TIFF output class
+---
+Ulf Zibis <ulf.zibis@gmx.de>
+General code cleanup, changes to the output classes to
+preserve the resolution information of the input file.
+---
+                              (in alphabetic order)
+
+$Id$
