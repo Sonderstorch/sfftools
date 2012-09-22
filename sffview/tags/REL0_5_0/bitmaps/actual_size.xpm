@@ -1,0 +1,21 @@
+/* XPM */
+static const char *actual_size_xpm[]={
+"16 15 3 1",
+"# c None",
+". c #000000",
+"a c #ffffff",
+"...........#####",
+".aaaaaaaaa..####",
+".aaaaaaaaa.a.###",
+".aaaaaaaaa....##",
+".aaaaaaaaaaaa.##",
+".aaaaaaaaaaaa.##",
+".aaaaaaaaaaaa.##",
+".aaaaaaaaaaaa.##",
+".aaaaaaaaaaaa.##",
+".aaaaaaaaaaaa.##",
+".aaaaaaaaaaaa.##",
+".aaaaaaaaaaaa.##",
+".aaaaaaaaaaaa.##",
+".aaaaaaaaaaaa.##",
+"..............##"};

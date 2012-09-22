@@ -1,0 +1,75 @@
+#
+# Makefile for MS Visual C (nmake)
+#
+# Build command:
+#  nmake /f makefile.vc 
+#
+# Without debug info: 
+#  nmake nodebug=1 /f makefile.vc
+
+!include <win32.mak>
+
+WXBASE = C:\wxWidgets-2.9.4
+
+WXLIBPATH = $(WXBASE)\lib\vc_lib
+
+!IFDEF NODEBUG
+WXCONFPATH = $(WXBASE)\lib\vc_lib\mswu
+WXLIBS = /LIBPATH:$(WXLIBPATH) wxbase29u.lib wxbase29u_net.lib wxmsw29u_core.lib \
+	wxmsw29u_aui.lib wxmsw29u_adv.lib wxmsw29u_ribbon.lib \
+	wxmsw29u_html.lib wxbase29u_xml.lib wxpng.lib wxtiff.lib \
+	wxjpeg.lib wxzlib.lib wxregexu.lib wxexpat.lib
+!ELSE
+WXCONFPATH = $(WXBASE)\lib\vc_lib\mswud
+WXLIBS = /LIBPATH:$(WXLIBPATH) wxbase29ud.lib wxbase29ud_net.lib wxmsw29ud_core.lib \
+	wxmsw29ud_aui.lib wxmsw29ud_adv.lib wxmsw29ud_ribbon.lib \
+	wxmsw29ud_html.lib wxbase29ud_xml.lib wxpngd.lib wxtiffd.lib \
+	wxjpegd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib
+!ENDIF
+
+INCL	= /I. /I$(WXCONFPATH) /I$(WXBASE)\include
+
+EXE=sffview.exe
+
+CFLAGS= /D_CRT_SECURE_NO_DEPRECATE $(cflags) $(cdebug) $(cvarsmt) 
+CPPFLAGS= /EHsc /D_CRT_SECURE_NO_DEPRECATE $(INCL) $(cppflags) $(cflags) $(cdebug) $(cvarsmt)
+LDFLAGS= $(ldebug) $(guilflags)
+LDLIBS= $(guilibs) $(olelibs) $(WXLIBS) advapi32.lib shell32.lib comctl32.lib rpcrt4.lib
+
+RCFLAGS = $(rcflags) /i$(WXBASE)\include
+
+OBJ	= \
+	..\codes.obj \
+	..\common.obj \
+	..\decoder.obj \
+	..\sffapp.obj \
+	..\sffdoc.obj \
+	..\sfffile.obj \
+	..\sffview.obj \
+	sffview.res
+	
+# Template command for compiling .c to .obj
+.c.obj:
+	$(cc) $(CFLAGS) $*.c /Fo$@
+
+# Template command for compiling .c to .obj
+.cpp.obj:
+	$(CPP) $(CPPFLAGS) $*.cpp /Fo$@
+
+# Template command for compiling .rc to .res
+.rc.res:
+	$(RC) $(RCFLAGS) /fo$@ $*.rc 
+
+all:	$(EXE)
+
+$(EXE):	$(OBJ)
+	$(link) $(LDFLAGS) $(LDLIBS) $(OBJ) -out:$(EXE)
+
+clean:
+	-del *.exe
+	-del *.ilk
+	-del *.exp
+	-del *.pdb
+	-del *.manifest
+	-del RC*
+	-del $(OBJ)
