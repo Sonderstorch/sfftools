@@ -1,0 +1,64 @@
+CHANGES
+-------
+
+V0.1 : crude start
+V0.2 : code cleanup, added support for multiple pages, robust
+       file handling.
+V0.3 : added support for PBM output.
+V1.0 : finally fixed mirroring bug (after recognizing that as
+       a bug). Page orientation should be correct now.
+V1.1 : changed license to BSD-style with advertising clause removed.
+V1.2 : added -bmpx and -pbmx switches to add file extensions,
+       changed mode of output file to binary (caused problems
+       with MS Windows), fixed bug with bmp output (wrote one
+       additional line).
+V2.0 : added jpeg and tiff output, sfftobmp now honours the vertical
+       resolution (lpi) field in the sff header and doubles
+       the scanlines accordingly.
+V2.1 : added single-page tiff output on request (sic!),
+       added adjustable jpeg quality,
+       omitted exception in the no-black-after-white-code case -
+       this seems to be a common error therefore continuing decoding
+       here seems reasonable. There maybe also an error in the code
+       table but omitting the exception fixed the problem faster ;),
+       changed the wording of the license for clarity.
+V2.2 : contributions by Ulf Zibis (thanks a lot!):
+       restructured and cleaned up code, preserve resolution information
+       in output files (JPG/BMP and TIFF), made line-doubling optional,
+       handle 300 and 400 dpi information (for SFF files created by
+       RVS COM)
+       *
+       contribution by Gernot Hillier (thanks a lot, too!):
+       output on stdout possible for multipage TIFF output
+       *
+       me:
+       changed the wording of the license to include contributors
+       created CREDITS file
+       restructured the code even more
+       added new commandline option parser my_getopt ((C) by Benjamin Sittler)
+       adapted stdout patch for Windows
+       tuned decoder to handle extended codes and EOLs
+V3.0 : me:
+       shuffled the code quite a bit
+       changed commandline options, now includes multi-file processing
+       made keeping the date possible for linux, too
+       fixed decoder bug which did not decode a full line (Kudos to Eckhard Rueggeberg)
+       fixed extended MH codes (wrong bitorder; silly me)
+V3.1 : me:
+       changed message output from stderr to stdout except errors (duh!)
+       added -quiet switch
+       some fixes from debian package
+       some big endian fixes
+       allowed up to 2048 bytes "fuzz" at the beginning of the file
+V3.1.1 me:
+       set the "DateTime" field within TIFF files with the UTC value of the 
+       input file's mtime (suggestion by asterisk@puzzled.xs4all.nl).
+V3.1.2 me:
+       treat files with empty pages correctly (thanks to dirk.fellenberg@interdata.de).
+V3.1.3 me:
+       corrected path handling under Windows, no features added or changed.
+       Sfftobmp -v now also prints the library versions involved.
+       The source tree now also contains makefile and 3rd-party libs for
+       compilation with Microsoft Visual C.
+--
+$Id: changes,v 1.6 2009/08/23 13:21:34 pschaefer Exp $
