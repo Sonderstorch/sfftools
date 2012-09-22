@@ -88,7 +88,7 @@ public:
     sk_current
   };
 
-  CFile() : m_hFile(NULL) { /* sonst nix */ };
+  CFile() : m_hFile(NULL), m_nFileNo(0) { /* sonst nix */ };
   CFile(const std::string& strPath);
     // throw CSimpleException
 
