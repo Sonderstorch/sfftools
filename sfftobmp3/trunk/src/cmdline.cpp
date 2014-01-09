@@ -109,7 +109,7 @@ void CCmdLineProcessor::printHelp()
   cout << "The OUTSPEC is interpreted as:" << endl;
   cout << " - a filename if only one input file is given." << endl;
   cout << " - a directory name if more than one input file is given." << endl << endl;
-  cout << "If OUTSPEC is ommitted, the name of the output files will be derived from the input" << endl;
+  cout << "If OUTSPEC is omitted, the name of the output files will be derived from the input" << endl;
   cout << "files and created in the same directory." << endl << endl;
   cout << "Output on stdout is available for multipaged TIFF output only (option \"-t\")." << endl;
   cout << "Use \"-\" as output filename in this case." << endl << endl;

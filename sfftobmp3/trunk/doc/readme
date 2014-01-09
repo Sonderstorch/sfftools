@@ -1,5 +1,5 @@
 ---------------
-SFFTOBMP V3.1.4
+SFFTOBMP V3.1.5
 ---------------
 
 Tool to convert "Structured Fax Files" into Windows bitmaps (BMP), 
@@ -114,7 +114,7 @@ OUTSPEC is interpreted as:
  - a filename if only one input file is given.
  - a directory name if more than one input file is given.
   
-If OUTSPEC is ommitted, the name of the output files will be 
+If OUTSPEC is omitted, the name of the output files will be 
 derived from the input files and created in the same directory.
   
 In case of TIFF output, you can specify the compression by using 
@@ -193,7 +193,7 @@ TODO
 ----
 
 - speed up decoder with better table lookups
-  (looking at GHz CPUs noadays, i doubt that this happes...) 
+  (looking at GHz CPUs nowadays, i doubt that this happens...) 
 - support other non-intel architectures (64 Bits, different
   byte order). Sfftobmp will most likely fail on these.
   (well, no one complained till now)
@@ -217,11 +217,6 @@ to /dev/null.
 
 I'm always pleased to hear that somebody is actually using my
 software. If you can manage it, e-mail me a quick notice.
-
-If you *really* like sfftobmp or depend on it, please look
-into my wishlist:
-
-http://www.amazon.de/gp/registry/wishlist/OVQ6LSYS4E4D/028-1843567-9543743
 
 Thanks!
 

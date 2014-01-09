@@ -62,5 +62,8 @@ V3.1.3 me:
        compilation with Microsoft Visual C.
 V3.1.4 me:
        fixed stdout output under Windows (crash), no features added or changed.
+V3.1.5 me:
+       fixed error introduced by new behaviour of boost::filesystem V3
+       (appending sequential page numbers to output filenames gone missing) 
 --
 $Id$

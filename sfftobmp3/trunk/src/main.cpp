@@ -38,6 +38,8 @@
 #include <cassert>
 #include <vector>
 #include <iostream>
+#include <sstream>
+#include <iomanip>
 
 #include <boost/filesystem/path.hpp>
 #include <boost/filesystem/operations.hpp>
@@ -71,6 +73,7 @@ int main( int argc, char *argv[] )
   fs::path pathInFileName;
   fs::path pathOutFileName;
   fs::path pathOutDirectory;
+  stringstream ssFilename;
 
   CCmdLineProcessor proc(argv, argc);
 
@@ -116,7 +119,6 @@ int main( int argc, char *argv[] )
     {
       COutputFilter *pOut = NULL;
       CSffFile      *pInfile = NULL;
-      char           acNumber[10];
 
       try
       {
@@ -172,32 +174,32 @@ int main( int argc, char *argv[] )
             if (pathOutFileName.string().length()) {
               // A fixed name was given, so use it as a base name
               outPath = pathOutFileName;
-              std::string orgExt = fs::extension(outPath);
+              std::string orgExt = outPath.extension().generic_string();
               if (nFileCountOut > 1) {
-                sprintf(acNumber, "_%03d", nPage+1);
-                outPath = fs::change_extension(outPath, acNumber);
-                if (orgExt.length()) {
-                  std::string strTemp = outPath.string();
-                  strTemp += orgExt;
-                  outPath = fs::path(strTemp);
-                }
+                outPath.replace_extension("");
+                ssFilename << outPath.generic_string();
+                ssFilename << "_" << setw(3) << setfill('0') << nPage+1;
+                ssFilename << orgExt;
+                outPath = fs::path(ssFilename.str());
               }
             } else {
               // Otherwise construct output filename from input filename
-              outPath = pathOutDirectory / pathInFileName.leaf();
+              outPath = pathOutDirectory / pathInFileName.filename();
               if (nFileCountOut > 1) {
-                sprintf(acNumber, "_%03d", nPage+1);
-                outPath = fs::change_extension(outPath, acNumber);
-                std::string strTemp = outPath.string();
-                strTemp += pOut->GetExtension();
-                outPath = fs::path(strTemp);
+                outPath.replace_extension("");
+                ssFilename << outPath.generic_string();
+                ssFilename << "_" << setw(3) << setfill('0') << nPage+1;
+                ssFilename << pOut->GetExtension();
+                outPath = fs::path(ssFilename.str());
               } else {
-                outPath = fs::change_extension(outPath, pOut->GetExtension());
+                outPath.replace_extension(pOut->GetExtension());
               }
             }
             if (!proc.doOverwrite() && !((nPage > 0) && (nFileCountOut == 1)) && fs::exists(outPath)) {
               throw CSimpleException(CSimpleException::err_outfileexists);
             }
+            ssFilename.str("");
+            ssFilename.clear();
           }
 
           bool bIsLowRes = pInfile->IsLowRes(nPage);
