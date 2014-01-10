@@ -1,4 +1,4 @@
-/* $Id: strtoul.c,v 1.1 2009/08/23 12:38:10 pschaefer Exp $ */
+/* $Id: strtoul.c,v 1.2 2005/07/07 16:34:06 dron Exp $ */
 
 /*
  * Copyright (c) 1990, 1993

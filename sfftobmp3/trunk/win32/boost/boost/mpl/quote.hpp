@@ -14,9 +14,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: quote.hpp,v 1.1 2009/08/23 12:38:09 pschaefer Exp $
-// $Date: 2009/08/23 12:38:09 $
-// $Revision: 1.1 $
+// $Id: quote.hpp 49272 2008-10-11 06:50:46Z agurtovoy $
+// $Date: 2008-10-10 23:50:46 -0700 (Fri, 10 Oct 2008) $
+// $Revision: 49272 $
 
 #if !defined(BOOST_MPL_PREPROCESSING_MODE)
 #   include <boost/mpl/void.hpp>

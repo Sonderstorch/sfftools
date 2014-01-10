@@ -1,4 +1,4 @@
-/* $Header: /cvsroot/sfftools/sfftobmp3/win32/libtiff/tools/rasterfile.h,v 1.1 2009/08/23 12:38:35 pschaefer Exp $ */
+/* $Header: /cvs/libtiff/tools/rasterfile.h,v 1.3 2003/11/12 19:14:33 dron Exp $ */
 
 /*
  * Description of header for files containing raster images

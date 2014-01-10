@@ -1,4 +1,4 @@
-/* $Header: /cvsroot/sfftools/sfftobmp3/win32/libtiff/contrib/pds/tif_imageiter.c,v 1.1 2009/08/23 12:39:45 pschaefer Exp $ */
+/* $Header: /cvs/maptools/cvsroot/libtiff/contrib/pds/tif_imageiter.c,v 1.4 2010-06-08 18:55:15 bfriesen Exp $ */
 
 /*
  * Copyright (c) 1991-1996 Sam Leffler
@@ -516,3 +516,10 @@ main(int argc, char **argv)
     
 }
 #endif
+/*
+ * Local Variables:
+ * mode: c
+ * c-basic-offset: 8
+ * fill-column: 78
+ * End:
+ */

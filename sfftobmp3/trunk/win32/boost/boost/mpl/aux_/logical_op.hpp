@@ -7,9 +7,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: logical_op.hpp,v 1.1 2009/08/23 12:39:08 pschaefer Exp $
-// $Date: 2009/08/23 12:39:08 $
-// $Revision: 1.1 $
+// $Id: logical_op.hpp 49267 2008-10-11 06:19:02Z agurtovoy $
+// $Date: 2008-10-10 23:19:02 -0700 (Fri, 10 Oct 2008) $
+// $Revision: 49267 $
 
 // NO INCLUDE GUARDS, THE HEADER IS INTENDED FOR MULTIPLE INCLUSION!
 

@@ -293,11 +293,11 @@ int main( int argc, char *argv[] )
         }
 
       }
-      catch (const std::exception & e) {
+      catch (const std::exception& e) {
         cerr << "ERROR: " << pathInFileName.string() << ": " << e.what() << endl;
         rc = 2;
       }
-      catch (CSimpleException e) {
+      catch (const CSimpleException& e) {
         cerr << "ERROR: " << pathInFileName.string() << ": " << e.what() << endl;
         rc = 2;
       }
@@ -311,7 +311,7 @@ int main( int argc, char *argv[] )
     }
     if (!bQuiet) cout << "Finished. " << endl << endl;
   }
-  catch (const std::exception & e) {
+  catch (const std::exception& e) {
     cerr << "ERROR: " << e.what() << endl;
     rc = 2;
   }

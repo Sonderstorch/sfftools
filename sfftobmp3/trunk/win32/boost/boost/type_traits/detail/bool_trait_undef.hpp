@@ -7,14 +7,15 @@
 // (See accompanying file LICENSE_1_0.txt or copy at 
 // http://www.boost.org/LICENSE_1_0.txt)
 
-// $Source: /cvsroot/sfftools/sfftobmp3/win32/boost/boost/type_traits/detail/bool_trait_undef.hpp,v $
-// $Date: 2009/08/23 12:39:24 $
-// $Revision: 1.1 $
+// $Source$
+// $Date: 2011-10-09 15:28:33 -0700 (Sun, 09 Oct 2011) $
+// $Revision: 74865 $
 
 #undef BOOST_TT_AUX_BOOL_TRAIT_VALUE_DECL
 #undef BOOST_TT_AUX_BOOL_C_BASE
 #undef BOOST_TT_AUX_BOOL_TRAIT_DEF1
 #undef BOOST_TT_AUX_BOOL_TRAIT_DEF2
+#undef BOOST_TT_AUX_BOOL_TRAIT_DEF3
 #undef BOOST_TT_AUX_BOOL_TRAIT_SPEC1
 #undef BOOST_TT_AUX_BOOL_TRAIT_SPEC2
 #undef BOOST_TT_AUX_BOOL_TRAIT_IMPL_SPEC1

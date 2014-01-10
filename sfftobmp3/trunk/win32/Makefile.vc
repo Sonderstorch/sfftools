@@ -22,19 +22,23 @@ LDFLAGS= $(ldebug) $(conlflags)
 LDLIBS= $(conlibs) $(LIBJPEG) $(LIBTIFF)
 
 OBJ	= \
-	..\src\cmdline.obj \
-	..\src\codes.obj \
-	..\src\common.obj \
-	..\src\decoder.obj \
-	..\src\input.obj \
-	..\src\main.obj \
-	..\src\my_getopt.obj \
-	..\src\output.obj \
-	boost\libs\system\src\error_code.obj \
-	boost\libs\filesystem\src\operations.obj \
-	boost\libs\filesystem\src\path.obj \
-	boost\libs\filesystem\src\portability.obj \
-	boost\libs\filesystem\src\utf8_codecvt_facet.obj
+  ..\src\cmdline.obj \
+  ..\src\codes.obj \
+  ..\src\common.obj \
+  ..\src\decoder.obj \
+  ..\src\input.obj \
+  ..\src\main.obj \
+  ..\src\my_getopt.obj \
+  ..\src\output.obj \
+  boost\libs\system\src\error_code.obj \
+  boost\libs\filesystem\src\operations.obj \
+  boost\libs\filesystem\src\path.obj \
+  boost\libs\filesystem\src\portability.obj \
+  boost\libs\filesystem\src\utf8_codecvt_facet.obj \
+  boost\libs\filesystem\src\codecvt_error_category.obj \
+  boost\libs\filesystem\src\path_traits.obj \
+  boost\libs\filesystem\src\unique_path.obj \
+  boost\libs\filesystem\src\windows_file_codecvt.obj
 
 # Template command for compiling .c to .obj
 .c.obj:

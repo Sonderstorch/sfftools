@@ -1,4 +1,4 @@
-# $Id: nmake.opt,v 1.1 2009/08/23 12:39:25 pschaefer Exp $
+# $Id: nmake.opt,v 1.18 2006/06/07 16:33:45 dron Exp $
 #
 # Copyright (C) 2004, Andrey Kiselev <dron@ak4719.spb.edu>
 #
@@ -114,8 +114,9 @@ CHECK_JPEG_YCBCR_SUBSAMPLING = 1
 # with no debugging information.
 # NOTE: /EHsc option required if you want to build the C++ stream API
 #
-#OPTFLAGS =	/Od /ZI /MTd /EHsc /W3 /D_DEBUG /D_CRT_SECURE_NO_DEPRECATE
-OPTFLAGS =	/Os /MT /EHsc /W3 /DNDEBUG /D_CRT_SECURE_NO_DEPRECATE
+# OPTFLAGS =	/Ox /MD /EHsc /W3 /D_CRT_SECURE_NO_DEPRECATE
+OPTFLAGS =	/Ox /MT /EHsc /W3 /D_CRT_SECURE_NO_DEPRECATE /DNDEBUG /D_MT
+#OPTFLAGS = 	/Zi 
 
 #
 # Uncomment following line to enable using Windows Common RunTime Library
