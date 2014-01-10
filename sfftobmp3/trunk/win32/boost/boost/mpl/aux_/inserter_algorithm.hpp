@@ -11,9 +11,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: inserter_algorithm.hpp,v 1.1 2009/08/23 12:39:08 pschaefer Exp $
-// $Date: 2009/08/23 12:39:08 $
-// $Revision: 1.1 $
+// $Id: inserter_algorithm.hpp 55648 2009-08-18 05:16:53Z agurtovoy $
+// $Date: 2009-08-17 22:16:53 -0700 (Mon, 17 Aug 2009) $
+// $Revision: 55648 $
 
 #include <boost/mpl/back_inserter.hpp>
 #include <boost/mpl/front_inserter.hpp>
@@ -49,7 +49,7 @@ template< \
       BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), typename P) \
     > \
 struct name< BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), P),na > \
-    : if_< has_push_back<P1> \
+    : if_< has_push_back< typename clear<P1>::type> \
         , aux::name##_impl< \
               BOOST_MPL_PP_PARAMS(BOOST_PP_DEC(arity), P) \
             , back_inserter< typename clear<P1>::type > \

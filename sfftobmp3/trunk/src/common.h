@@ -73,7 +73,7 @@ public:
   unsigned m_nError;
 
   CSimpleException(const int nError) :
-    m_nError(nError) { };
+    m_nError(nError) { }
 
   const std::string& what() const;
 
@@ -89,6 +89,7 @@ protected:
   FILE                   *m_hFile;
   int                     m_nFileNo;
   boost::filesystem::path m_strPath;
+  std::string             m_strNativePath;
 
 public:
   enum seek_offset {
@@ -96,15 +97,18 @@ public:
     sk_current
   };
 
-  CFile() : m_hFile(NULL), m_nFileNo(0) { /* sonst nix */ };
+  CFile() : m_hFile(NULL), m_nFileNo(0) { /* sonst nix */ }
   CFile(const std::string& strPath);
     // throw CSimpleException
 
   virtual ~CFile();
 
-  FILE       *GetFP() { return m_hFile; };
-  int         GetFN() { return m_nFileNo; };
-  const char *GetFileName() { return m_strPath.string().c_str(); };
+  FILE       *GetFP() { return m_hFile; }
+  int         GetFN() { return m_nFileNo; }
+  const char *GetFileName() {
+      m_strNativePath = m_strPath.string();
+      return m_strNativePath.c_str();
+  }
   sff_byte    GetC();
   sff_dword   Tell();
   bool        Eof();

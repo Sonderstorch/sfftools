@@ -7,9 +7,9 @@
 // (See accompanying file LICENSE_1_0.txt or copy at 
 // http://www.boost.org/LICENSE_1_0.txt)
 
-// $Source: /cvsroot/sfftools/sfftobmp3/win32/boost/boost/type_traits/detail/type_trait_undef.hpp,v $
-// $Date: 2009/08/23 12:39:24 $
-// $Revision: 1.1 $
+// $Source$
+// $Date: 2004-09-02 08:41:37 -0700 (Thu, 02 Sep 2004) $
+// $Revision: 24874 $
 
 #undef BOOST_TT_AUX_TYPE_TRAIT_DEF1
 #undef BOOST_TT_AUX_TYPE_TRAIT_SPEC1

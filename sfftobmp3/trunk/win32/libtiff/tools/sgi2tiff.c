@@ -1,4 +1,4 @@
-/* $Id: sgi2tiff.c,v 1.1 2009/08/23 12:38:35 pschaefer Exp $ */
+/* $Id: sgi2tiff.c,v 1.6 2010-03-10 18:56:49 bfriesen Exp $ */
 
 /*
  * Copyright (c) 1991-1997 Sam Leffler
@@ -326,3 +326,10 @@ usage(void)
 		fprintf(stderr, "%s\n", stuff[i]);
 	exit(-1);
 }
+/*
+ * Local Variables:
+ * mode: c
+ * c-basic-offset: 8
+ * fill-column: 78
+ * End:
+ */

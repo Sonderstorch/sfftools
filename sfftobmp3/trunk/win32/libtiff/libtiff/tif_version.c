@@ -1,4 +1,4 @@
-/* $Header: /cvsroot/sfftools/sfftobmp3/win32/libtiff/libtiff/tif_version.c,v 1.1 2009/08/23 12:38:10 pschaefer Exp $ */
+/* $Header: /cvs/maptools/cvsroot/libtiff/libtiff/tif_version.c,v 1.3 2010-03-10 18:56:49 bfriesen Exp $ */
 /*
  * Copyright (c) 1992-1997 Sam Leffler
  * Copyright (c) 1992-1997 Silicon Graphics, Inc.
@@ -31,3 +31,10 @@ TIFFGetVersion(void)
 {
 	return (TIFFVersion);
 }
+/*
+ * Local Variables:
+ * mode: c
+ * c-basic-offset: 8
+ * fill-column: 78
+ * End:
+ */

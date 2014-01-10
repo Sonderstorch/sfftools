@@ -10,9 +10,9 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-// $Id: bcc.hpp,v 1.1 2009/08/23 12:39:09 pschaefer Exp $
-// $Date: 2009/08/23 12:39:09 $
-// $Revision: 1.1 $
+// $Id: bcc.hpp 49272 2008-10-11 06:50:46Z agurtovoy $
+// $Date: 2004-09-02 10:41:37 -0500 (Thu, 02 Sep 2004) $
+// $Revision: 24874 $
 
 #include <boost/mpl/aux_/config/workaround.hpp>
 

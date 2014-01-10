@@ -1,4 +1,3 @@
-# $Id: Makefile.am,v 1.1 2009/08/23 12:39:57 pschaefer Exp $
 #
 # Tag Image File Format (TIFF) Software
 #

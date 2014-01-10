@@ -24,15 +24,9 @@
 
 #ifdef BOOST_ITERATOR_REF_CONSTNESS_KILLS_WRITABILITY
 # include <boost/type_traits/remove_reference.hpp>
-
-# if BOOST_WORKAROUND(__CODEGEARC__, BOOST_TESTED_AT(0x610))
-#   include <boost/type_traits/add_reference.hpp>
-# endif
-
-#else
-# include <boost/type_traits/add_reference.hpp>
 #endif
 
+#include <boost/type_traits/add_reference.hpp>
 #include <boost/iterator/detail/config_def.hpp>
 
 #include <boost/iterator/iterator_traits.hpp>
@@ -238,7 +232,7 @@ namespace boost
   // versions of iterator_adaptor The idea is that when the user needs
   // to fiddle with the reference type it is highly likely that the
   // iterator category has to be adjusted as well.  Any of the
-  // following four template arguments may be omitted or explicitly
+  // following four template arguments may be ommitted or explicitly
   // replaced by use_default.
   //
   //   Value - if supplied, the value_type of the resulting iterator, unless

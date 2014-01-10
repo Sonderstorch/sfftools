@@ -1,4 +1,4 @@
-/* $Header: /cvsroot/sfftools/sfftobmp3/win32/libtiff/libtiff/tif_error.c,v 1.1 2009/08/23 12:38:10 pschaefer Exp $ */
+/* $Header: /cvs/maptools/cvsroot/libtiff/libtiff/tif_error.c,v 1.5 2010-03-10 18:56:48 bfriesen Exp $ */
 
 /*
  * Copyright (c) 1988-1997 Sam Leffler
@@ -71,3 +71,10 @@ TIFFErrorExt(thandle_t fd, const char* module, const char* fmt, ...)
 	va_end(ap);
 }
 
+/*
+ * Local Variables:
+ * mode: c
+ * c-basic-offset: 8
+ * fill-column: 78
+ * End:
+ */
