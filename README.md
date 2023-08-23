@@ -1,5 +1,9 @@
 # sfftools
 
+Note 2023-08-23: Project has been archived since ISDN and CAPI are irrelevant now
+
+***
+
 Note 2016-06-16: Project was imported from https://sourceforge.net/projects/sfftools/
 
 ***
