@@ -1,5 +1,9 @@
 # sfftools
 
+Note 2025-08-13: Project has been briefly unarchived to fix a build error with newer Boost libraries
+
+***
+
 Note 2023-08-23: Project has been archived since ISDN and CAPI are irrelevant now
 
 ***
