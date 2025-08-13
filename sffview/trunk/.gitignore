@@ -1,0 +1,76 @@
+# Compiled Object files
+*.o
+*.obj
+*.lo
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.lib
+*.la
+
+# Executables
+*.exe
+*.out
+sffview
+
+# Build directories
+build/
+.libs/
+.deps/
+
+# Autotools/Make generated files
+config.log
+config.status
+config.h
+stamp-h1
+
+# Eclipse project files
+.metadata
+.cproject
+.project
+.settings/
+
+# Backup files
+*~
+*.bak
+*.swp
+*.tmp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Visual Studio (Windows build)
+*.vcxproj.user
+*.vcproj.user
+*.suo
+*.user
+*.sdf
+*.opensdf
+*.VC.db
+Debug/
+Release/
+x64/
+Win32/
+
+# MinGW
+*.dll.a
+
+# wxWidgets specific (if used)
+*.pch

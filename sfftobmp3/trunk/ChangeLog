@@ -1,0 +1,10 @@
+ChangeLog for sfftobmp
+=====================
+
+2025-08-13  Peter Schäfer  <peter.schaefer@gmx.de>
+	* Fixed build system compatibility with modern autotools
+	* Updated Boost library linking
+	* Fixed line endings to Unix format
+
+2024-XX-XX  Previous changes
+	* Earlier development history

@@ -1,0 +1,12 @@
+NEWS for sfftobmp
+================
+
+Version 2.3
+-----------
+- Updated build system
+- Fixed compatibility with modern Boost libraries
+- Improved error handling
+
+Version 2.2
+-----------
+- Previous release

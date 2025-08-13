@@ -1,0 +1,27 @@
+README for sfftobmp
+==================
+
+This program converts SFF (Structured Fax Format) files to various image formats including:
+- BMP (Bitmap)
+- JPEG
+- TIFF (single or multi-page)
+- PBM (Portable Bitmap)
+
+Usage:
+------
+sfftobmp [options] INFILE1 [INFILE2 ..] [-o OUTSPEC]
+
+For more information, run: sfftobmp --help
+
+Dependencies:
+-------------
+- libtiff
+- libjpeg
+- libboost_filesystem
+- libboost_system
+
+Building:
+---------
+./configure
+make
+make install
