@@ -40,9 +40,8 @@
 #include <cstdio>
 #include <iostream>
 
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/convenience.hpp>
 #include <boost/version.hpp>
+#include <boost/filesystem.hpp>
 
 #include <tiff.h>
 

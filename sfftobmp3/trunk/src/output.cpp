@@ -41,8 +41,7 @@
 #include <cassert>
 #include <iostream>
 
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/convenience.hpp>
+#include <boost/filesystem.hpp>
 
 #ifdef WIN32
 #include <io.h>

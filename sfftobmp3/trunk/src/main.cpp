@@ -41,9 +41,7 @@
 #include <sstream>
 #include <iomanip>
 
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/convenience.hpp>
+#include <boost/filesystem.hpp>
 
 extern "C"
 {
